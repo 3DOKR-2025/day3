@@ -1,0 +1,21 @@
+# WARNING: This Docker Compose file is good enough. But it can definitely be improved for the mini-project.
+services:
+  api:
+    build: .
+    environment:
+      - PORT=3000
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_USER=testuser
+      - DB_PASSWORD=Sup1nf0
+      - DB_NAME=mydb
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+  db:
+    image: postgres:14.5
+    environment:
+      - POSTGRES_USER=testuser
+      - POSTGRES_PASSWORD=Sup1nf0
+      - POSTGRES_DB=mydb
